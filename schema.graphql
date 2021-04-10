@@ -1,0 +1,23 @@
+type User {
+  id: String!
+  name: String!
+  rides(arrival: String, departure: String): [Ride]
+}
+
+type Ride {
+  id: String!
+  arrival: String!
+  departure: String!
+  driver: User
+  riders: [User]
+}
+
+type Query {
+  user: [User]
+}
+
+type Mutation {
+  createRide(arrival: String, departure: String): Ride
+  updateRide(id: String!, arrival: String, departure: String): Ride
+  deleteRide(id: String!): String
+}
